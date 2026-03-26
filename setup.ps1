@@ -10,7 +10,8 @@ $modules = @(
     "agents\s01_agent_loop",
     "agents\s02_tool_use",
     "agents\s03_todo_write",
-    "agents\s04_subagent"
+    "agents\s04_subagent",
+    "agents\s05_skill_loading"
 )
 
 foreach ($mod in $modules) {
