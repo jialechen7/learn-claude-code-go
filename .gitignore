@@ -1,0 +1,41 @@
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Build outputs
+# =========================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Project build dirs
+bin/
+dist/
+build/
+
+# =========================
+# Go tooling
+# =========================
+coverage.out
+*.coverprofile
+
+# =========================
+# Editor / IDE
+# =========================
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,8 @@
+go 1.25.8
+
+use (
+	./agents/s01_agent_loop
+	./agents/s02_tool_use
+	./agents/s03_todo_write
+	./agents/s04_subagent
+)
