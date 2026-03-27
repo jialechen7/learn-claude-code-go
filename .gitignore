@@ -39,3 +39,10 @@ coverage.out
 # =========================
 .DS_Store
 Thumbs.db
+
+# =========================
+# Transcripts and tasks
+# =========================
+.transcripts/
+.tasks/
+.team/

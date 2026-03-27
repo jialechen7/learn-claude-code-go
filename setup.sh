@@ -13,6 +13,10 @@ modules=(
   ./agents/s03_todo_write
   ./agents/s04_subagent
   ./agents/s05_skill_loading
+  ./agents/s06_context_compact
+  ./agents/s07_task_system
+  ./agents/s08_background_tasks
+  ./agents/s09_agent_teams
 )
 
 for mod in "${modules[@]}"; do

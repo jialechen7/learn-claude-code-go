@@ -43,8 +43,12 @@ go run ./agents/s01_agent_loop
 - `s01_agent_loop`：最小可用 Agent Loop
 - `s02_tool_use`：工具调用与工具分发（`bash` / `read_file` / `write_file` / `edit_file`）
 - `s03_todo_write`：TodoWrite 规划 —— 带状态的 TodoManager + nag reminder 注入
-- `s04_subagent`：Subagent 模式 —— 用 task 工具派生子 Agent，子 Agent 独立上下文，只向父 Agent 返回摘要
+- `s04_subagent`：Subagent 模式 —— 用 task 工具派生子 Agent，子 Agent 独立上下文，只向父 Agent 返回摘要
 - `s05_skill_loading`：Skill Loading —— 两层技能注入，系统提示只含名称，按需加载完整技能体
+- `s06_context_compact`：Context Compact —— 三层压缩管道（micro/auto/manual），支持无限长会话
+- `s07_task_system`：Task System —— 任务持久化为 JSON 文件，支持依赖图（blockedBy/blocks），上下文压缩后任务状态不丢失
+- `s08_background_tasks`：Background Tasks —— 用 goroutine 后台执行命令，结果通过通知队列在下次 LLM 调用前注入
+- `s09_agent_teams`：Agent Teams —— 持久化命名 Agent，JSONL 文件信箱，多 goroutine 并发协作
 
 ## 项目结构
 
@@ -67,7 +71,23 @@ learn-claude-code-go/
 │  │  ├─ main.go
 │  │  ├─ go.mod
 │  │  └─ go.sum
-│  └─ s05_skill_loading/
+│  ├─ s05_skill_loading/
+│  │  ├─ main.go
+│  │  ├─ go.mod
+│  │  └─ go.sum
+│  ├─ s06_context_compact/
+│  │  ├─ main.go
+│  │  ├─ go.mod
+│  │  └─ go.sum
+│  ├─ s07_task_system/
+│  │  ├─ main.go
+│  │  ├─ go.mod
+│  │  └─ go.sum
+│  ├─ s08_background_tasks/
+│  │  ├─ main.go
+│  │  ├─ go.mod
+│  │  └─ go.sum
+│  └─ s09_agent_teams/
 │     ├─ main.go
 │     ├─ go.mod
 │     └─ go.sum
@@ -110,6 +130,18 @@ go run ./agents/s04_subagent
 
 # 运行 s05
 go run ./agents/s05_skill_loading
+
+# 运行 s06
+go run ./agents/s06_context_compact
+
+# 运行 s07
+go run ./agents/s07_task_system
+
+# 运行 s08
+go run ./agents/s08_background_tasks
+
+# 运行 s09
+go run ./agents/s09_agent_teams
 ```
 
 也可以先构建：
@@ -120,10 +152,14 @@ go build -o bin/s02_tool_use ./agents/s02_tool_use
 go build -o bin/s03_todo_write ./agents/s03_todo_write
 go build -o bin/s04_subagent ./agents/s04_subagent
 go build -o bin/s05_skill_loading ./agents/s05_skill_loading
+go build -o bin/s06_context_compact ./agents/s06_context_compact
+go build -o bin/s07_task_system ./agents/s07_task_system
+go build -o bin/s08_background_tasks ./agents/s08_background_tasks
+go build -o bin/s09_agent_teams ./agents/s09_agent_teams
 ```
 
 ## 说明
 
 - 本项目为学习用途，主要关注 Agent 设计模式与工程组织
 - 示例中包含基础安全限制（如危险命令拦截、工作区路径约束）
-- 后续可继续按 ``learn-claude-code`` 章节扩展 ``s06+``
+- 后续可继续按 ``learn-claude-code`` 章节扩展 ``s10+``
