@@ -17,6 +17,9 @@ modules=(
   ./agents/s07_task_system
   ./agents/s08_background_tasks
   ./agents/s09_agent_teams
+  ./agents/s10_team_protocols
+  ./agents/s11_autonomous_agents
+  ./agents/s12_worktree_task_isolation
 )
 
 for mod in "${modules[@]}"; do

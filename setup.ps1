@@ -15,7 +15,10 @@ $modules = @(
     "agents\s06_context_compact",
     "agents\s07_task_system",
     "agents\s08_background_tasks",
-    "agents\s09_agent_teams"
+    "agents\s09_agent_teams",
+    "agents\s10_team_protocols",
+    "agents\s11_autonomous_agents",
+    "agents\s12_worktree_task_isolation"
 )
 
 foreach ($mod in $modules) {

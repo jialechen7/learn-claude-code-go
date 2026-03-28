@@ -49,6 +49,9 @@ go run ./agents/s01_agent_loop
 - `s07_task_system`：Task System —— 任务持久化为 JSON 文件，支持依赖图（blockedBy/blocks），上下文压缩后任务状态不丢失
 - `s08_background_tasks`：Background Tasks —— 用 goroutine 后台执行命令，结果通过通知队列在下次 LLM 调用前注入
 - `s09_agent_teams`：Agent Teams —— 持久化命名 Agent，JSONL 文件信箱，多 goroutine 并发协作
+- `s10_team_protocols`：Team Protocols —— Shutdown 和 Plan Approval 协议，request_id 关联追踪
+- `s11_autonomous_agents`：Autonomous Agents —— Idle 循环、任务轮询、自动认领、身份重注入
+- `s12_worktree_task_isolation`：Worktree Task Isolation —— 目录级隔离、事件总线、并行执行
 
 ## 项目结构
 
@@ -88,6 +91,18 @@ learn-claude-code-go/
 │  │  ├─ go.mod
 │  │  └─ go.sum
 │  └─ s09_agent_teams/
+│     ├─ main.go
+│     ├─ go.mod
+│     └─ go.sum
+│  └─ s10_team_protocols/
+│     ├─ main.go
+│     ├─ go.mod
+│     └─ go.sum
+│  └─ s11_autonomous_agents/
+│     ├─ main.go
+│     ├─ go.mod
+│     └─ go.sum
+│  └─ s12_worktree_task_isolation/
 │     ├─ main.go
 │     ├─ go.mod
 │     └─ go.sum
@@ -142,6 +157,15 @@ go run ./agents/s08_background_tasks
 
 # 运行 s09
 go run ./agents/s09_agent_teams
+
+# 运行 s10
+go run ./agents/s10_team_protocols
+
+# 运行 s11
+go run ./agents/s11_autonomous_agents
+
+# 运行 s12
+go run ./agents/s12_worktree_task_isolation
 ```
 
 也可以先构建：
@@ -156,10 +180,13 @@ go build -o bin/s06_context_compact ./agents/s06_context_compact
 go build -o bin/s07_task_system ./agents/s07_task_system
 go build -o bin/s08_background_tasks ./agents/s08_background_tasks
 go build -o bin/s09_agent_teams ./agents/s09_agent_teams
+go build -o bin/s10_team_protocols ./agents/s10_team_protocols
+go build -o bin/s11_autonomous_agents ./agents/s11_autonomous_agents
+go build -o bin/s12_worktree_task_isolation ./agents/s12_worktree_task_isolation
 ```
 
 ## 说明
 
 - 本项目为学习用途，主要关注 Agent 设计模式与工程组织
 - 示例中包含基础安全限制（如危险命令拦截、工作区路径约束）
-- 后续可继续按 ``learn-claude-code`` 章节扩展 ``s10+``
+- 项目已完成 s01~s12 全部实现
